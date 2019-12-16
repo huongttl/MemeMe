@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -39,25 +39,46 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TEXT" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XX2-p0-GKH" userLabel="Bottom meme text">
+                                <rect key="frame" x="0.0" y="794" width="414" height="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TEXT" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tmX-bs-deY" userLabel="Top meme text">
+                                <rect key="frame" x="0.0" y="88" width="414" height="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="z36-N2-McY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0XT-qP-pEP"/>
                             <constraint firstItem="VWG-hd-fgI" firstAttribute="top" secondItem="z36-N2-McY" secondAttribute="bottom" id="5b6-3z-ep4"/>
+                            <constraint firstItem="XX2-p0-GKH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5bb-fB-ZEc"/>
                             <constraint firstItem="z36-N2-McY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ClD-Hx-vZb"/>
                             <constraint firstItem="z36-N2-McY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ESH-7d-Wv4"/>
                             <constraint firstItem="VWG-hd-fgI" firstAttribute="leading" secondItem="z36-N2-McY" secondAttribute="leading" id="M9N-7G-kXF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XX2-p0-GKH" secondAttribute="trailing" id="O0l-Q7-czk"/>
                             <constraint firstItem="GPk-tV-puU" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="SMT-ou-4Ia"/>
                             <constraint firstItem="GPk-tV-puU" firstAttribute="top" secondItem="VWG-hd-fgI" secondAttribute="bottom" id="Sz9-Iv-lIq"/>
+                            <constraint firstItem="tmX-bs-deY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cgb-7c-YpC"/>
                             <constraint firstItem="GPk-tV-puU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dFU-KS-60O"/>
                             <constraint firstItem="GPk-tV-puU" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="jxH-Bj-iWc"/>
                             <constraint firstItem="VWG-hd-fgI" firstAttribute="trailing" secondItem="z36-N2-McY" secondAttribute="trailing" id="thj-F1-svf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tmX-bs-deY" secondAttribute="trailing" id="uUv-L0-GJ5"/>
+                            <constraint firstItem="GPk-tV-puU" firstAttribute="top" secondItem="XX2-p0-GKH" secondAttribute="bottom" id="usw-1M-7on"/>
+                            <constraint firstItem="tmX-bs-deY" firstAttribute="top" secondItem="z36-N2-McY" secondAttribute="bottom" id="vEz-8i-jic"/>
+                            <constraint firstItem="XX2-p0-GKH" firstAttribute="centerX" secondItem="GPk-tV-puU" secondAttribute="centerX" id="z0F-KX-DpQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="bottomText" destination="XX2-p0-GKH" id="1y3-Qh-dbk"/>
                         <outlet property="cameraButton" destination="Qor-7B-WI7" id="6qn-lh-2hp"/>
                         <outlet property="imageView" destination="VWG-hd-fgI" id="yNN-Fg-eur"/>
+                        <outlet property="topText" destination="tmX-bs-deY" id="jnA-kA-Npl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
