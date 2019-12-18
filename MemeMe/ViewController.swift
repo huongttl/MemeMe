@@ -57,10 +57,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
-        NSAttributedString.Key.foregroundColor: UIColor.green,
+        NSAttributedString.Key.foregroundColor: UIColor.white,
         NSAttributedString.Key.strokeColor: UIColor.black,
         NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSAttributedString.Key.strokeWidth: 4
+        NSAttributedString.Key.strokeWidth: -4
     ]
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
