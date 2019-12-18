@@ -20,14 +20,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var topToolBar: UIToolbar!
     @IBOutlet weak var bottomToolBar: UIToolbar!
     
-    
-    struct Meme {
-        var topText: String
-        var bottomText: String
-        var originalImage: UIImage
-        var memedImage: UIImage
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
@@ -59,7 +51,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             imageView.image = image
             checkShareButton()
             dismiss(animated: true, completion: nil)
-            print("Cam")
         } else {
             print("Fail to get image")
         }
@@ -68,7 +59,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.foregroundColor: UIColor.green,
         NSAttributedString.Key.strokeColor: UIColor.black,
-        
         NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSAttributedString.Key.strokeWidth: 4
     ]
@@ -117,15 +107,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
-        print("origin y keyboardWillShow: \(view.frame.origin.y)")
         if bottomText.isEditing {
             view.frame.origin.y = -getKeyboardHeight(notification)
         }
-        
     }
     
     @objc func keyboardWillHide() {
-        print("origin y keyboardWillHide: \(view.frame.origin.y)")
         view.frame.origin.y = 0.0
     }
     
@@ -146,17 +133,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func generateMemedImage() -> UIImage {
-        topToolBar.isHidden = true
-        bottomToolBar.isHidden = true
+        hideToolbar(isHiden: true)
         
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        topToolBar.isHidden = false
-        bottomToolBar.isHidden = false
-        
+        hideToolbar(isHiden: false)
         return memedImage
     }
     
@@ -165,6 +149,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             shareButton.isEnabled = true
         } else {
             shareButton.isEnabled = false
+        }
+    }
+    
+    func hideToolbar(isHiden: Bool) {
+        if isHiden {
+            topToolBar.isHidden = true
+            bottomToolBar.isHidden = true
+        } else {
+            topToolBar.isHidden = false
+            bottomToolBar.isHidden = false
         }
     }
 
