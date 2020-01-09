@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditViewController.swift
 //  MemeMe
 //
 //  Created by Huong Tran on 12/15/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var cameraButton: UIBarButtonItem!
