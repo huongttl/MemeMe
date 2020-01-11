@@ -20,6 +20,8 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var topToolBar: UIToolbar!
     @IBOutlet weak var bottomToolBar: UIToolbar!
     
+    var memedImage: UIImage!
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
@@ -68,6 +70,14 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
         
     }
 
+    func saveMeme() {
+        let meme = Meme(topText: topText.text!, bottomText: bottomText.text!, originalImage: imageView.image!, memedImage: memedImage)
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
+        print("SAVED\(appDelegate.memes.count)")
+    }
+    
     @IBAction func pickAnImageFromAlbum (_ sender: Any) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -83,17 +93,21 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     @IBAction func cancelEditing(_ sender: Any) {
-        bottomText.text = "TEXT"
-        topText.text = "TEXT"
-        imageView.image = nil
-        checkShareButton()
+//        bottomText.text = "TEXT"
+//        topText.text = "TEXT"
+//        imageView.image = nil
+//        checkShareButton()
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func shareSNS(_ sender: Any) {
-        let imageToShare = [generateMemedImage()]
-        let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+        memedImage = generateMemedImage()
+        let imageToShare = [memedImage]
+        let activityViewController = UIActivityViewController(activityItems: imageToShare as [Any], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
+        saveMeme()
         self.present(activityViewController, animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -137,11 +151,11 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
         
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
-        let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        let memeImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
         hideToolbar(isHiden: false)
-        return memedImage
+        return memeImage
     }
     
     func checkShareButton() {

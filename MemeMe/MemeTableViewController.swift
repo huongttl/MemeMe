@@ -9,7 +9,12 @@
 import UIKit
 
 class MemeTableViewController: UITableViewController {
-
+    var memes: [Meme]! {
+        let object = UIApplication.shared.delegate
+        let delegate = object as! AppDelegate
+        return delegate.memes
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,27 +25,32 @@ class MemeTableViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMeme))
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        print("LIST \(memes.count)")
+    }
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 0
+//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        print("COUNT\(memes.count)")
+        return memes.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell", for: indexPath)
+        let dic = memes[(indexPath as NSIndexPath).row]
+        cell.imageView?.image = dic.memedImage
+        cell.textLabel?.text = dic.topText + dic.bottomText
+        print("WHAT THE HELL IS GOING ON?!")
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
