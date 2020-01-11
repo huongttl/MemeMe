@@ -17,7 +17,7 @@ class MemeTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMeme))
     }
 
     // MARK: - Table view data source
@@ -87,4 +87,8 @@ class MemeTableViewController: UITableViewController {
     }
     */
 
+    @objc func addMeme() {
+        let editVC = storyboard?.instantiateViewController(identifier: "MemeEditViewController") as! MemeEditViewController
+        navigationController?.pushViewController(editVC, animated: true)
+    }
 }
