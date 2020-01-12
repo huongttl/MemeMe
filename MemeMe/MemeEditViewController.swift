@@ -117,16 +117,16 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
         let imageToShare = [memedImage]
         let activityViewController = UIActivityViewController(activityItems: imageToShare as [Any], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
-        saveMeme()
+
         
         activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
             if(!completed) {
                 return
             }
+            self.saveMeme()
             self.navigationController?.popToRootViewController(animated: true)
         }
         self.present(activityViewController, animated: true, completion: nil)
-//        navigationController?.popViewController(animated: true)
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {

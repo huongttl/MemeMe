@@ -23,12 +23,17 @@ class MemeTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMeme))
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell")!
+        cell.frame = CGRect(x: 0, y: 0, width: self.view.frame.height/6.0, height: self.view.frame.height/6.0)
+//        print("WHAT THE HELL IS GOING ON?!")
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tableView.reloadData()
         print("LIST \(memes.count)")
+        
     }
     // MARK: - Table view data source
 
@@ -50,7 +55,8 @@ class MemeTableViewController: UITableViewController {
         let dic = memes[(indexPath as NSIndexPath).row]
         cell.imageView?.image = dic.memedImage
         cell.textLabel?.text = dic.topText + dic.bottomText
-        print("WHAT THE HELL IS GOING ON?!")
+//        cell.frame = CGRect(x: 0, y: 0, width: self.view.frame.height/6.0, height: self.view.frame.height/6.0)
+//        print("WHAT THE HELL IS GOING ON?!")
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -61,6 +67,15 @@ class MemeTableViewController: UITableViewController {
         
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self.view.frame.height/6.0
+    }
+    
+//    override func viewWillLayoutSubviews() {
+//        super.viewWillLayoutSubviews()
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell")!
+//        cell.imageView?.frame = CGRect(x:0.0,y:0.0,width:self.view.frame.height/6.0,height:self.view.frame.height/6.0)
+//    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
