@@ -24,8 +24,8 @@ class MemeTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMeme))
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell")!
-        cell.frame = CGRect(x: 0, y: 0, width: self.view.frame.height/6.0, height: self.view.frame.height/6.0)
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell")!
+//        cell.frame = CGRect(x: 0, y: 0, width: self.view.frame.height/6.0, height: self.view.frame.height/6.0)
 //        print("WHAT THE HELL IS GOING ON?!")
     }
 
@@ -34,6 +34,9 @@ class MemeTableViewController: UITableViewController {
         tableView.reloadData()
         print("LIST \(memes.count)")
         
+        if memes.count == 0 {
+            addMemeWithNoAnimation()
+        }
     }
     // MARK: - Table view data source
 
@@ -123,6 +126,12 @@ class MemeTableViewController: UITableViewController {
 
     @objc func addMeme() {
         let editVC = storyboard?.instantiateViewController(identifier: "MemeEditViewController") as! MemeEditViewController
+//        present(editVC, animated: true, completion: nil)
         navigationController?.pushViewController(editVC, animated: true)
+    }
+    func addMemeWithNoAnimation() {
+        let editVC = storyboard?.instantiateViewController(identifier: "MemeEditViewController") as! MemeEditViewController
+        //        present(editVC, animated: true, completion: nil)
+                navigationController?.pushViewController(editVC, animated: false)
     }
 }

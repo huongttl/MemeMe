@@ -185,6 +185,7 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
         }
     }
     
+
     func hideToolbar(isHiden: Bool) {
         if isHiden {
             topToolBar.isHidden = true
