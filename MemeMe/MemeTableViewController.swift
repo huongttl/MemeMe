@@ -26,6 +26,8 @@ class MemeTableViewController: UITableViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tableView.reloadData()
         print("LIST \(memes.count)")
     }
     // MARK: - Table view data source
@@ -37,13 +39,14 @@ class MemeTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        print("COUNT\(memes.count)")
+        print("COUNT table\(memes.count)")
         return memes.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell", for: indexPath)
+        print("WHAT THE HELL IS GOING ON?!1")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell")!
         let dic = memes[(indexPath as NSIndexPath).row]
         cell.imageView?.image = dic.memedImage
         cell.textLabel?.text = dic.topText + dic.bottomText

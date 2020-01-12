@@ -107,7 +107,7 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
         activityViewController.popoverPresentationController?.sourceView = self.view
         saveMeme()
         self.present(activityViewController, animated: true, completion: nil)
-        navigationController?.popViewController(animated: true)
+//        navigationController?.popViewController(animated: true)
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
