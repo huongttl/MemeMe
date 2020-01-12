@@ -118,6 +118,13 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
         let activityViewController = UIActivityViewController(activityItems: imageToShare as [Any], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         saveMeme()
+        
+        activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            if(!completed) {
+                return
+            }
+            self.navigationController?.popToRootViewController(animated: true)
+        }
         self.present(activityViewController, animated: true, completion: nil)
 //        navigationController?.popViewController(animated: true)
     }
