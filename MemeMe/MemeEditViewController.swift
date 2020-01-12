@@ -33,11 +33,17 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         checkShareButton()
         subcribeToKeyboardNotification()
+        
+        navigationController?.navigationBar.isHidden = true
+        tabBarController?.tabBar.isHidden = true
     }
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         unSubcribeToKeyboardNotification()
         super.viewWillDisappear(true)
+        navigationController?.navigationBar.isHidden = false
+        tabBarController?.tabBar.isHidden = false
     }
     
     override func viewDidLoad() {
