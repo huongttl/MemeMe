@@ -105,29 +105,30 @@
             </objects>
             <point key="canvasLocation" x="1180" y="543.8423645320197"/>
         </scene>
-        <!--View Controller-->
+        <!--Meme Show View Controller-->
         <scene sceneID="SOh-6j-lFA">
             <objects>
-                <viewController id="Hgr-Bg-Cll" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeShowViewController" id="Hgr-Bg-Cll" customClass="MemeShowViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m0G-DR-vDc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="roP-DP-3hK">
-                                <rect key="frame" x="0.0" y="223.66666666666663" width="375" height="375"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="roP-DP-3hK" secondAttribute="height" multiplier="1:1" id="xbH-Xj-fHa"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="roP-DP-3hK" firstAttribute="trailing" secondItem="vPP-26-8he" secondAttribute="trailing" id="Xba-p9-SIo"/>
-                            <constraint firstItem="roP-DP-3hK" firstAttribute="centerY" secondItem="vPP-26-8he" secondAttribute="centerY" id="jdO-na-Ufp"/>
-                            <constraint firstItem="roP-DP-3hK" firstAttribute="leading" secondItem="vPP-26-8he" secondAttribute="leading" id="kQ6-95-Q36"/>
+                            <constraint firstItem="roP-DP-3hK" firstAttribute="leading" secondItem="vPP-26-8he" secondAttribute="leading" id="1JL-4g-hc0"/>
+                            <constraint firstItem="roP-DP-3hK" firstAttribute="top" secondItem="vPP-26-8he" secondAttribute="top" id="1Jr-a6-z3h"/>
+                            <constraint firstItem="roP-DP-3hK" firstAttribute="bottom" secondItem="vPP-26-8he" secondAttribute="bottom" id="UZk-lx-eMd"/>
+                            <constraint firstItem="roP-DP-3hK" firstAttribute="trailing" secondItem="vPP-26-8he" secondAttribute="trailing" id="Zjm-I6-XQN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vPP-26-8he"/>
                     </view>
+                    <connections>
+                        <outlet property="memedImage" destination="roP-DP-3hK" id="lQg-J0-N1Z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jqA-Tj-XsZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

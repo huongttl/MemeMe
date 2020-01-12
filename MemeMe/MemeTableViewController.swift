@@ -53,7 +53,13 @@ class MemeTableViewController: UITableViewController {
         print("WHAT THE HELL IS GOING ON?!")
         return cell
     }
-    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let showVC = storyboard?.instantiateViewController(identifier: "MemeShowViewController") as! MemeShowViewController
+        let memeToSend = memes[(indexPath as NSIndexPath).row]
+        showVC.memeToShow = memeToSend
+        navigationController?.pushViewController(showVC, animated: true)
+        
+    }
 
     /*
     // Override to support conditional editing of the table view.

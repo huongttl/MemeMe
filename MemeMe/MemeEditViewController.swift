@@ -21,9 +21,15 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var bottomToolBar: UIToolbar!
     
     var memedImage: UIImage!
-    
+    var memeToEdit: Meme!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+
+        if let memeToEdit = memeToEdit {
+            topText.text = memeToEdit.topText
+            bottomText.text = memeToEdit.bottomText
+            imageView.image = memeToEdit.originalImage
+        }
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         checkShareButton()
         subcribeToKeyboardNotification()
