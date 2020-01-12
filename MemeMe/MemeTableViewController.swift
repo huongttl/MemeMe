@@ -131,6 +131,7 @@ class MemeTableViewController: UITableViewController {
     }
     func addMemeWithNoAnimation() {
         let editVC = storyboard?.instantiateViewController(identifier: "MemeEditViewController") as! MemeEditViewController
+        editVC.cancelButonIsEnabled = false
         //        present(editVC, animated: true, completion: nil)
                 navigationController?.pushViewController(editVC, animated: false)
     }

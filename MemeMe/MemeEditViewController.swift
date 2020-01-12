@@ -22,6 +22,7 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     
     var memedImage: UIImage!
     var memeToEdit: Meme!
+    var cancelButonIsEnabled: Bool!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
 
@@ -36,6 +37,9 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
         
         navigationController?.navigationBar.isHidden = true
         tabBarController?.tabBar.isHidden = true
+        if let cancelButonIsEnabled = cancelButonIsEnabled {
+            cancelButton.isEnabled = cancelButonIsEnabled
+        }
     }
     
     
