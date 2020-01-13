@@ -23,10 +23,6 @@ class MemeTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMeme))
-        
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell")!
-//        cell.frame = CGRect(x: 0, y: 0, width: self.view.frame.height/6.0, height: self.view.frame.height/6.0)
-//        print("WHAT THE HELL IS GOING ON?!")
     }
 
     override func viewWillAppear(_ animated: Bool) {

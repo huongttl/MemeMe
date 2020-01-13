@@ -16,6 +16,8 @@ class MemeShowViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editMeme))
         // Do any additional setup after loading the view.
+        
+
     }
     override func viewWillAppear(_ animated: Bool) {
         memedImage.image = memeToShow.memedImage
