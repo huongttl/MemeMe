@@ -103,6 +103,9 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Sent Memes" id="JfZ-pA-pb4"/>
+                    <connections>
+                        <outlet property="flowLayout" destination="XsF-TT-84X" id="Xll-7h-6WL"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nTq-nA-3jh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

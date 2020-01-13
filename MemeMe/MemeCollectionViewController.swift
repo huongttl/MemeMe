@@ -9,6 +9,7 @@
 import UIKit
 
 class MemeCollectionViewController: UICollectionViewController {
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     var memes: [Meme]! {
         let object = UIApplication.shared.delegate
         let delegate = object as! AppDelegate
@@ -22,6 +23,8 @@ class MemeCollectionViewController: UICollectionViewController {
 
         // Register cell classes
 //        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "MemeCollectionViewCell")
+        
+
 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMeme))
         // Do any additional setup after loading the view.
@@ -30,6 +33,15 @@ class MemeCollectionViewController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         collectionView.reloadData()
+        
+        let space: CGFloat = 3.0
+        let dimension = (view.frame.size.width - space * 2)/3.0
+        flowLayout.minimumLineSpacing = space
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
+        print("ITEM SIZE CODE")
+        print(flowLayout.itemSize.height)
+        
     }
     /*
     // MARK: - Navigation
@@ -58,7 +70,8 @@ class MemeCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath) as! MemeCollectionViewCell
         let dic = self.memes[(indexPath as NSIndexPath).row]
         cell.imageView.image = dic.memedImage
-//    
+        print("ITEM SIZE UI")
+        print(cell.imageView.image?.size.height as Any)
         return cell
     }
 
