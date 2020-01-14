@@ -21,9 +21,14 @@ class MemeCollectionViewController: UICollectionViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Register cell classes
+//         Register cell classes
 //        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "MemeCollectionViewCell")
-        
+        let space: CGFloat = 3.0
+        let dimension = (view.frame.size.width - space * 2)/3.0
+        flowLayout.minimumLineSpacing = space
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
+        print(flowLayout.itemSize.height)
 
 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMeme))
@@ -34,13 +39,7 @@ class MemeCollectionViewController: UICollectionViewController {
         super.viewWillAppear(true)
         collectionView.reloadData()
         
-        let space: CGFloat = 3.0
-        let dimension = (view.frame.size.width - space * 2)/3.0
-        flowLayout.minimumLineSpacing = space
-        flowLayout.minimumInteritemSpacing = space
-        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
-        print("ITEM SIZE CODE")
-        print(flowLayout.itemSize.height)
+
         
     }
     /*
@@ -70,7 +69,6 @@ class MemeCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath) as! MemeCollectionViewCell
         let dic = self.memes[(indexPath as NSIndexPath).row]
         cell.imageView.image = dic.memedImage
-        print("ITEM SIZE UI")
         print(cell.imageView.image?.size.height as Any)
         return cell
     }
