@@ -53,7 +53,20 @@ class MemeTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell")!
         let dic = memes[(indexPath as NSIndexPath).row]
         cell.imageView?.image = dic.memedImage
-        cell.textLabel?.text = dic.topText + dic.bottomText
+        cell.textLabel?.text = dic.topText.prefix(5) + "..." + dic.bottomText.suffix(5)
+//        var textToShow = ""
+//        if dic.topText.count > 5 {
+//            textToShow = String(dic.topText.prefix(5)) + "..."
+//            textToShow += dic.bottomText.suffix(5)
+//
+//        } else {
+//            textToShow = dic.topText
+//            if dic.bottomText.count > 5 {
+//                textToShow += "..." + dic.bottomText.suffix(5)
+//            } else {
+//                textToShow += dic.bottomText.suffix(5)
+//            }
+//        }
 //        cell.frame = CGRect(x: 0, y: 0, width: self.view.frame.height/6.0, height: self.view.frame.height/6.0)
 //        print("WHAT THE HELL IS GOING ON?!")
         return cell
