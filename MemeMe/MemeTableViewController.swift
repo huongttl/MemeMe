@@ -50,10 +50,10 @@ class MemeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("WHAT THE HELL IS GOING ON?!1")
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell") as! MemeTableViewCell
         let dic = memes[(indexPath as NSIndexPath).row]
-        cell.imageView?.image = dic.memedImage
-        cell.textLabel?.text = dic.topText.prefix(5) + "..." + dic.bottomText.suffix(5)
+        cell.memeImage.image = dic.memedImage
+        cell.memeLabel.text = dic.topText.prefix(5) + "..." + dic.bottomText.suffix(5)
 //        var textToShow = ""
 //        if dic.topText.count > 5 {
 //            textToShow = String(dic.topText.prefix(5)) + "..."

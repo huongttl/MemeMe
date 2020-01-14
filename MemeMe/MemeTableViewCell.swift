@@ -9,7 +9,9 @@
 import UIKit
 
 class MemeTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var memeLabel: UILabel!
+    @IBOutlet weak var memeImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

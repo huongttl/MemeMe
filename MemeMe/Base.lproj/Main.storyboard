@@ -18,22 +18,40 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" restorationIdentifier="MemeTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemeTableViewCell" textLabel="WOc-AA-9m9" style="IBUITableViewCellStyleDefault" id="2fd-rk-PPy" customClass="MemeTableViewCell" customModule="MemeMe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="47.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" restorationIdentifier="MemeTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemeTableViewCell" rowHeight="115" id="2fd-rk-PPy" customClass="MemeTableViewCell" customModule="MemeMe" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="115"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2fd-rk-PPy" id="LYv-BC-cNQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="47.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="115"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WOc-AA-9m9">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="47.666667938232422"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5ux-JK-AbC">
+                                            <rect key="frame" x="0.0" y="0.0" width="115" height="115"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="5ux-JK-AbC" secondAttribute="height" multiplier="1:1" id="h5y-5I-cuD"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffQ-My-37d">
+                                            <rect key="frame" x="115" y="0.0" width="260" height="115"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="5ux-JK-AbC" firstAttribute="top" secondItem="LYv-BC-cNQ" secondAttribute="top" id="2h9-QU-BgV"/>
+                                        <constraint firstAttribute="trailing" secondItem="ffQ-My-37d" secondAttribute="trailing" id="Iej-SA-Pgj"/>
+                                        <constraint firstItem="ffQ-My-37d" firstAttribute="top" secondItem="LYv-BC-cNQ" secondAttribute="top" id="ZBu-7m-8br"/>
+                                        <constraint firstAttribute="bottom" secondItem="ffQ-My-37d" secondAttribute="bottom" id="cc7-hi-RXn"/>
+                                        <constraint firstAttribute="bottom" secondItem="5ux-JK-AbC" secondAttribute="bottom" id="l5Z-iP-QJR"/>
+                                        <constraint firstItem="ffQ-My-37d" firstAttribute="leading" secondItem="5ux-JK-AbC" secondAttribute="trailing" id="uYV-XQ-mKy"/>
+                                        <constraint firstItem="5ux-JK-AbC" firstAttribute="leading" secondItem="LYv-BC-cNQ" secondAttribute="leading" id="wAl-fS-ada"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="memeImage" destination="5ux-JK-AbC" id="JJ4-Fg-Vpd"/>
+                                    <outlet property="memeLabel" destination="ffQ-My-37d" id="HDq-lp-Olu"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -45,7 +63,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1t9-fR-JTa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1180" y="-157"/>
+            <point key="canvasLocation" x="1180" y="-157.38916256157637"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Xyw-Qq-p36">
