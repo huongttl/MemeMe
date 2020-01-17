@@ -15,6 +15,9 @@ class MemeCollectionViewController: UICollectionViewController {
         let delegate = object as! AppDelegate
         return delegate.memes
     }
+    let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+    let itemsPerRow: CGFloat = 3.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -116,4 +119,18 @@ class MemeCollectionViewController: UICollectionViewController {
     }
     */
 
+
+}
+extension MemeCollectionViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let padding = sectionInsets.left * (itemsPerRow + 1)
+        let cellWidth = (view.frame.width - padding) / itemsPerRow
+        return CGSize(width: cellWidth, height: cellWidth)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
+    }
 }
