@@ -15,7 +15,7 @@ class MemeCollectionViewController: UICollectionViewController {
         let delegate = object as! AppDelegate
         return delegate.memes
     }
-    let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+    let sectionInsets = UIEdgeInsets(top: 5.0, left: 20.0, bottom: 5.0, right: 20.0)
     let itemsPerRow: CGFloat = 3.0
     
     override func viewDidLoad() {
@@ -26,12 +26,13 @@ class MemeCollectionViewController: UICollectionViewController {
 
 //         Register cell classes
 //        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "MemeCollectionViewCell")
-        let space: CGFloat = 3.0
-        let dimension = (view.frame.size.width - space * 2)/3.0
-        flowLayout.minimumLineSpacing = space
-        flowLayout.minimumInteritemSpacing = space
-        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
-        print(flowLayout.itemSize.height)
+//        let space: CGFloat = 3.0
+//
+//        let dimension = (view.frame.size.width - space * 2)/3.0
+//        flowLayout.minimumInteritemSpacing = space
+//        flowLayout.minimumLineSpacing = space
+//        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
+//        print(flowLayout.itemSize.width)
 
 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMeme))
