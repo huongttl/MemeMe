@@ -53,15 +53,15 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        topText.text = "TEXT"
-        topText.defaultTextAttributes = memeTextAttributes
-        topText.textAlignment = .center
-        topText.delegate = self
-        
-        bottomText.text = "TEXT"
-        bottomText.defaultTextAttributes = memeTextAttributes
-        bottomText.textAlignment = .center
-        bottomText.delegate = self
+        initTextField(topText)
+        initTextField(bottomText)
+    }
+    
+    func initTextField(_ text: UITextField) {
+        text.text = "TEXT"
+        text.defaultTextAttributes = memeTextAttributes
+        text.textAlignment = .center
+        text.delegate = self
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -91,29 +91,25 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
-        print("SAVED\(appDelegate.memes.count)")
     }
     
     @IBAction func pickAnImageFromAlbum (_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
+        showImagePicker(source: .photoLibrary)
     }
     
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        present(imagePicker, animated: true, completion: nil)
+        showImagePicker(source: .camera)
     }
     
     @IBAction func cancelEditing(_ sender: Any) {
-//        bottomText.text = "TEXT"
-//        topText.text = "TEXT"
-//        imageView.image = nil
-//        checkShareButton()
         navigationController?.popViewController(animated: true)
+    }
+    
+    func showImagePicker(source: UIImagePickerController.SourceType) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = source
+        present(imagePicker, animated: true, completion: nil)
     }
     
     @IBAction func shareSNS(_ sender: Any) {
@@ -122,7 +118,6 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
         let activityViewController = UIActivityViewController(activityItems: imageToShare as [Any], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
 
-        
         activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
             if(!completed) {
                 return

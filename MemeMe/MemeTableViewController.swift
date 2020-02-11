@@ -49,26 +49,10 @@ class MemeTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("WHAT THE HELL IS GOING ON?!1")
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell") as! MemeTableViewCell
         let dic = memes[(indexPath as NSIndexPath).row]
         cell.memeImage.image = dic.memedImage
         cell.memeLabel.text = dic.topText.prefix(5) + "..." + dic.bottomText.suffix(5)
-//        var textToShow = ""
-//        if dic.topText.count > 5 {
-//            textToShow = String(dic.topText.prefix(5)) + "..."
-//            textToShow += dic.bottomText.suffix(5)
-//
-//        } else {
-//            textToShow = dic.topText
-//            if dic.bottomText.count > 5 {
-//                textToShow += "..." + dic.bottomText.suffix(5)
-//            } else {
-//                textToShow += dic.bottomText.suffix(5)
-//            }
-//        }
-//        cell.frame = CGRect(x: 0, y: 0, width: self.view.frame.height/6.0, height: self.view.frame.height/6.0)
-//        print("WHAT THE HELL IS GOING ON?!")
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -76,72 +60,19 @@ class MemeTableViewController: UITableViewController {
         let memeToSend = memes[(indexPath as NSIndexPath).row]
         showVC.memeToShow = memeToSend
         navigationController?.pushViewController(showVC, animated: true)
-        
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return self.view.frame.height/6.0
     }
     
-//    override func viewWillLayoutSubviews() {
-//        super.viewWillLayoutSubviews()
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell")!
-//        cell.imageView?.frame = CGRect(x:0.0,y:0.0,width:self.view.frame.height/6.0,height:self.view.frame.height/6.0)
-//    }
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     @objc func addMeme() {
         let editVC = storyboard?.instantiateViewController(identifier: "MemeEditViewController") as! MemeEditViewController
-//        present(editVC, animated: true, completion: nil)
         navigationController?.pushViewController(editVC, animated: true)
     }
     func addMemeWithNoAnimation() {
         let editVC = storyboard?.instantiateViewController(identifier: "MemeEditViewController") as! MemeEditViewController
         editVC.cancelButonIsEnabled = false
-        //        present(editVC, animated: true, completion: nil)
-                navigationController?.pushViewController(editVC, animated: false)
+        navigationController?.pushViewController(editVC, animated: false)
     }
 }
